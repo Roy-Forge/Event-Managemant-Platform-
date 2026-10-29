@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add an event - Forge Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <a href="index.html" class="logo">Forge Events</a>
+      <p class="role-label">Event organiser</p>
+      <nav><ul>
+        <li><a href="admin-dashboard.html">Dashboard</a></li>
+        <li><a href="add-event.html" class="active">Add new event</a></li>
+        <li><a href="manage-events.html">Manage events</a></li>
+        <li><a href="index.html">View public site</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></nav>
+      <div class="logout"><a href="index.html">Back to home</a></div>
+    </aside>
+    <main class="main">
+      <div class="page-top"><div><h1>Add a new event</h1><p>Enter the event details below to publish it to your events list.</p></div>
+        <a class="btn btn-outline" href="admin-dashboard.html">Back to dashboard</a></div>
+      <section class="panel">
+        <div id="event-notice" class="notice" role="status" hidden></div>
+        <form id="event-form">
+          <div class="form-grid">
+            <div class="form-field"><label for="title">Event name *</label><input id="title" name="title" required maxlength="100" placeholder="e.g. Campus Tech Meetup"></div>
+            <div class="form-field"><label for="date">Event date *</label><input id="date" name="date" type="date" required></div>
+            <div class="form-field"><label for="time">Start time</label><input id="time" name="time" type="time"></div>
+            <div class="form-field"><label for="venue">Venue *</label><input id="venue" name="venue" required maxlength="120" placeholder="e.g. Main Auditorium"></div>
+            <div class="form-field"><label for="capacity">Attendee capacity *</label><input id="capacity" name="capacity" type="number" min="1" max="100000" value="100" required></div>
+            <div class="form-field"><label for="status">Publication status</label><select id="status" name="status"><option value="Open">Open for registration</option><option value="Draft">Draft</option></select></div>
+            <div class="form-field full"><label for="description">Description</label><textarea id="description" name="description" maxlength="1500" placeholder="What should attendees know about this event?"></textarea></div>
+          </div>
+          <div class="form-actions"><button class="btn btn-primary" type="submit">Save event</button><a class="btn btn-outline" href="manage-events.html">Manage existing events</a></div>
+        </form>
+      </section>
+      <p class="muted">Prototype note: events are saved in this browser only. A shared database and secure admin sign-in must be connected for multi-user or public production use.</p>
+    </main>
+  </div>
+  <script src="events.js"></script>
+</body>
+</html>

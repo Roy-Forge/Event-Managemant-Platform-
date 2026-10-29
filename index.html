@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forge Event Management System</title>
+
+  <!-- Font from Google Fonts (optional - if you delete this, the page uses Arial) -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- This line connects the page to our styling file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       1. HEADER
+       ============================================================ -->
+  <header class="header">
+    <div class="container header-inner">
+
+       
+           <img src="forge-logo-wht.png" alt="Forge Events logo"> 
+      <a href="index.html" class="logo">Forge Events</a>
+
+      <!-- Menu. Each <li> is one menu item, each <a> is a link to another page -->
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html" class="btn btn-outline">Log in</a></li>
+          <li><a href="register.html" class="btn btn-primary">Register</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- ============================================================
+         2. HERO (the first big section people see)
+         Left side = text and buttons. Right side = a picture.
+         ============================================================ -->
+    <section class="hero">
+      <div class="container hero-inner">
+
+        <div class="hero-text">
+          <h1>Register, get your ticket, walk straight in.</h1>
+          <p>
+            Forge Events handles sign-up, QR tickets and check-in for your
+            events, so nobody queues with a paper list.
+          </p>
+          <a href="events.html" class="btn btn-primary">Browse events</a>
+          <!--<a href="login.html" class="btn btn-outline">Log in</a>-->
+        </div>
+
+        <div class="hero-picture">
+          <!--
+            PICTURE SPACE #1 (hero picture)
+           
+           <img src="image6.jpg" alt="People at an event">
+        </div>-->
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         3. UPCOMING EVENTS
+         ============================================================ -->
+    <section class="events">
+      <div class="container">
+
+        <h2>Upcoming events</h2>
+        <p class="events-intro">Pick an event to see the details and register.</p>
+
+        <div class="card-grid">
+
+          <!-- Event card 1 -->
+          <article class="card">
+            <!-- PICTURE SPACE #2 -->
+           
+             <img src="image1.jpg" alt="Career Fair 2026"> 
+
+            <div class="card-body">
+              <h3>Career Fair 2026</h3>
+              <p>15 Oct 2026, 09:00 - Main Hall</p>
+              <p class="spots">80 spots left of 200</p>
+              <a href="event-details.html">View details</a>
+            </div>
+          </article>
+
+          <!-- Event card 2 -->
+          <article class="card">
+            <!-- PICTURE SPACE #3 -->
+            <img src="image3.jpg" alt="Alumni Networking Night"> 
+
+            <div class="card-body">
+              <h3>Alumni Networking Night</h3>
+              <p>02 Nov 2026, 18:00 - Auditorium</p>
+              <p class="spots">105 spots left of 150</p>
+              <a href="event-details.html">View details</a>
+            </div>
+          </article>
+
+          <!-- Event card 3 (a past event - the extra class "past" makes it look faded) -->
+          <article class="card past">
+            <!-- PICTURE SPACE #4 -->
+            
+             <img src="image5.jpg" alt="Orientation Week"> 
+
+            <div class="card-body">
+              <h3>Orientation Week</h3>
+              <p>Ended - Campus</p>
+              <p class="spots">Registration closed</p>
+              <a href="event-details.html">View summary</a>
+            </div>
+          </article>
+
+        </div>
+        <div id="created-public-events" class="card-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       4. FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>Forge Event Management System</span>
+      <span><a href="contact.html">Contact</a> &nbsp; <a href="privacy.html">Privacy notice</a></span>
+    </div>
+  </footer>
+
+  <script src="events.js"></script>
+</body>
+</html>

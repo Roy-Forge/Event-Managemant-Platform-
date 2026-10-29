@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+  ADMIN DASHBOARD - HTML file
+  Who sees this: the admin (superadmin). This is the person who can
+  create and manage events.
+
+  The page has 2 parts:
+    1. Sidebar - logo and the menu of things the admin can do
+    2. Main    - welcome text, the numbers, then the table of events
+
+  NOTE FOR THE TEAM (login page):
+    After a successful login, send admins to this page
+    (admin-dashboard.html) and students/volunteers to student-dashboard.html.
+
+  All the numbers and names below are EXAMPLES. Later they will come
+  from the database.
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin dashboard - Forge Events</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+  <div class="dashboard">
+
+    <!-- ============================================================
+         1. SIDEBAR
+         The link for the page you are on has class="active".
+         ============================================================ -->
+    <aside class="sidebar">
+      <a href="index.html" class="logo">Forge Events</a>
+      <p class="role-label">Signed in as Admin</p>
+
+      <nav>
+        <ul>
+          <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
+          <li><a href="add-event.html">Add new event</a></li>
+          <li><a href="about.html">About the platform</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="add-event.html">Add new event</a></li>
+          <li><a href="manage-events.html">Manage events</a></li>
+          <li><a href="registrations.html">Registrations</a></li>
+          <li><a href="checkin.html">Check-in</a></li>
+          <li><a href="reports.html">Attendance reports</a></li>
+          <li><a href="certificates.html">Certificates and surveys</a></li>
+          <li><a href="users.html">Manage users</a></li>
+        </ul>
+      </nav>
+
+      <div class="logout">
+        <a href="index.html">Log out</a>
+      </div>
+    </aside>
+
+
+    <!-- ============================================================
+         2. MAIN CONTENT
+         ============================================================ -->
+    <main class="main">
+
+      <!-- Welcome text and the main admin action: adding an event -->
+      <div class="page-top">
+        <div>
+          <h1>Welcome, Admin</h1>
+          <p>Here is what is happening across your events.</p>
+        </div>
+        <a href="add-event.html" class="btn btn-primary">+ Add new event</a>
+      </div>
+
+      <!-- The row of numbers. To add another box, copy one <div class="stat-box"> -->
+      <section class="stats">
+        <div class="stat-box">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Upcoming events</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">165</div>
+          <div class="stat-label">Total registrations</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">84</div>
+          <div class="stat-label">Checked in so far</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">158</div>
+          <div class="stat-label">Certificates sent</div>
+        </div>
+      </section>
+
+      <!-- Table of events. One <tr> is one row, each <td> is one cell.
+           To add an event to the table, copy a whole <tr> ... </tr> block. -->
+      <section class="panel">
+        <h2>Your events</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Date</th>
+              <th>Registered</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="created-events-table">
+            <tr>
+              <td>Career Fair 2026</td>
+              <td>15 Oct 2026</td>
+              <td>120 / 200</td>
+              <td><span class="status open">Open</span></td>
+              <td>
+                <a href="manage-events.html" class="btn btn-outline btn-small">Manage</a>
+                <a href="add-event.html" class="btn btn-outline btn-small">Edit</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Alumni Networking Night</td>
+              <td>02 Nov 2026</td>
+              <td>45 / 150</td>
+              <td><span class="status open">Open</span></td>
+              <td>
+                <a href="manage-events.html" class="btn btn-outline btn-small">Manage</a>
+                <a href="add-event.html" class="btn btn-outline btn-small">Edit</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Tech Talk: AI in Industry</td>
+              <td>20 Nov 2026</td>
+              <td>0 / 60</td>
+              <td><span class="status">Draft</span></td>
+              <td>
+                <a href="manage-events.html" class="btn btn-outline btn-small">Manage</a>
+                <a href="add-event.html" class="btn btn-outline btn-small">Edit</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Orientation Week</td>
+              <td>Ended</td>
+              <td>180 / 180</td>
+              <td><span class="status">Past</span></td>
+              <td>
+                <a href="reports.html" class="btn btn-outline btn-small">View report</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Latest sign-ups -->
+      <section class="panel">
+        <h2>Latest registrations</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Event</th>
+              <th>Registered on</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Thabo M.</td>
+              <td>Career Fair 2026</td>
+              <td>27 Sep 2026</td>
+            </tr>
+            <tr>
+              <td>Karabo N.</td>
+              <td>Career Fair 2026</td>
+              <td>26 Sep 2026</td>
+            </tr>
+            <tr>
+              <td>Naledi K.</td>
+              <td>Alumni Networking Night</td>
+              <td>26 Sep 2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="events.js"></script>
+</body>
+</html>

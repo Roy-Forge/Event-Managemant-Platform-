@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+  STUDENT / VOLUNTEER DASHBOARD - HTML file
+  Who sees this: students, volunteers and other visitors who have an account.
+  They cannot create events. They can register for events, see their
+  tickets and certificates, and (if they are volunteering) open check-in.
+
+  It uses exactly the same layout as the admin dashboard (sidebar on the
+  left, content on the right). Only the menu items and the content change.
+
+  All names and numbers are EXAMPLES. Later they will come from the database.
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin dashboard - Forge Events</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <!-- ============================================================
+         1. SIDEBAR
+         ============================================================ -->
+    <aside class="sidebar">
+      <a href="index.html" class="logo">Forge Events</a>
+      <p class="role-label">Signed in as Student</p>
+
+      <nav>
+        <ul>
+          <li><a href="student-dashboard.html" class="active">Dashboard</a></li>
+          <li><a href="events.html">Browse events</a></li>
+          <li><a href="my-registrations.html">My registrations</a></li>
+          <li><a href="my-tickets.html">My tickets</a></li>
+          <li><a href="my-certificates.html">My certificates</a></li>
+          <!-- Only show the next link to people who are volunteering -->
+          <li><a href="checkin.html">Volunteer check-in</a></li>
+        </ul>
+      </nav>
+
+      <div class="logout">
+        <a href="index.html">Log out</a>
+      </div>
+    </aside>
+
+
+    <!-- ============================================================
+         2. MAIN CONTENT
+         ============================================================ -->
+    <main class="main">
+
+      <div class="page-top">
+        <div>
+          <h1>Welcome, Student</h1>
+          <p>Your events, tickets and certificates in one place.</p>
+        </div>
+        <a href="events.html" class="btn btn-primary">Browse events</a>
+      </div>
+
+      <!-- The row of numbers -->
+      <section class="stats">
+        <div class="stat-box">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Events registered</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Tickets ready</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Certificates earned</div>
+        </div>
+      </section>
+
+      <!-- Events the student has signed up for.
+           One <div class="row-item"> is one row. Copy it to add another. -->
+      <section class="panel">
+        <h2>My upcoming events</h2>
+
+        <div class="row-item">
+          <div>
+            <h3>Career Fair 2026</h3>
+            <p>15 Oct 2026, 09:00 - Main Hall</p>
+          </div>
+          <a href="my-tickets.html" class="btn btn-primary btn-small">View ticket</a>
+        </div>
+
+        <div class="row-item">
+          <div>
+            <h3>Alumni Networking Night</h3>
+            <p>02 Nov 2026, 18:00 - Auditorium</p>
+          </div>
+          <a href="my-tickets.html" class="btn btn-primary btn-small">View ticket</a>
+        </div>
+      </section>
+
+      <!-- Events the student has NOT registered for yet -->
+      <section class="panel">
+        <h2>Events you can register for</h2>
+
+        <div class="row-item">
+          <div>
+            <h3>Tech Talk: AI in Industry</h3>
+            <p>20 Nov 2026, 14:00 - Lab 3 - 60 spots left</p>
+          </div>
+          <a href="event-details.html" class="btn btn-outline btn-small">Register</a>
+        </div>
+      </section>
+
+      <!-- Certificates from events the student attended -->
+      <section class="panel">
+        <h2>My certificates</h2>
+
+        <div class="row-item">
+          <div>
+            <h3>Orientation Week</h3>
+            <p>Certificate of attendance</p>
+          </div>
+          <a href="my-certificates.html" class="btn btn-outline btn-small">Download</a>
+        </div>
+      </section>
+
+      <!-- Volunteer duties. Delete this whole section for students who are not volunteers. -->
+      <section class="panel">
+        <h2>Volunteer duties</h2>
+
+        <div class="row-item">
+          <div>
+            <h3>Career Fair 2026 - check-in desk</h3>
+            <p>15 Oct 2026, from 08:00</p>
+          </div>
+          <a href="checkin.html" class="btn btn-outline btn-small">Open check-in</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+</body>
+</html>

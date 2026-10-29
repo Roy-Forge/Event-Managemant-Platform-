@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact - Forge Events</title><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
+<body><header class="header"><div class="container header-inner"><a href="index.html" class="logo">Forge Events</a><nav><ul class="menu"><li><a href="index.html">Home</a></li><li><a href="events.html">Events</a></li><li><a href="about.html">About</a></li><li><a href="contact.html" aria-current="page">Contact</a></li><li><a href="admin-dashboard.html" class="btn btn-outline">Admin</a></li></ul></nav></div></header>
+<main class="page-content"><div class="container"><h1>Contact us</h1><p>Questions about an event or the platform? Send a message using the form below.</p>
+<section class="content-panel"><form id="contact-form"><div class="form-grid">
+<div class="form-field"><label for="name">Your name *</label><input id="name" name="name" required maxlength="100" autocomplete="name"></div>
+<div class="form-field"><label for="email">Your email *</label><input id="email" name="email" type="email" required maxlength="150" autocomplete="email"></div>
+<div class="form-field full"><label for="subject">Subject *</label><input id="subject" name="subject" required maxlength="150"></div>
+<div class="form-field full"><label for="message">Message *</label><textarea id="message" name="message" required maxlength="3000"></textarea></div>
+</div><div class="form-actions"><button class="btn btn-primary" type="submit">Prepare email</button></div><p id="contact-notice" class="muted" role="status"></p></form></section>
+<p class="muted">This prototype prepares a message in your default email app. It does not send or store contact submissions on a server.</p>
+</div></main><footer class="footer"><div class="container footer-inner"><span>Forge Event Management System</span><span><a href="about.html">About</a></span></div></footer>
+<script>
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+ e.preventDefault(); if (!this.reportValidity()) return;
+ const f = new FormData(this);
+ const subject = encodeURIComponent(f.get("subject"));
+ const body = encodeURIComponent("Name: " + f.get("name") + "\\nEmail: " + f.get("email") + "\\n\\n" + f.get("message"));
+ document.getElementById("contact-notice").textContent = "Your email app should open with the message prepared. Add the team's contact email to the mailto link when it is confirmed.";
+ window.location.href = "mailto:?subject=" + subject + "&body=" + body;
+});
+</script></body></html>
