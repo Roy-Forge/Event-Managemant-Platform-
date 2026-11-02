@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+  CHECK-IN PAGE - HTML file
+  Who uses this: admins and volunteers at the door of an event.
+  Their job: check each attendee in by scanning the QR code on their
+  ticket, or by typing the ticket ID if the scan does not work.
+
+  The page has 2 parts:
+    1. Sidebar - same as the admin dashboard
+    2. Main    - choose event, the numbers, the scanner, the recent list
+
+  FOR VOLUNTEERS: copy the sidebar from student-dashboard.html instead,
+  and put class="active" on the "Volunteer check-in" link.
+
+  All names and numbers are EXAMPLES. Later they will come from the database.
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Check-in - Forge Events</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <!-- ============================================================
+         1. SIDEBAR (admin version)
+         ============================================================ -->
+    <aside class="sidebar">
+      <a href="index.html" class="logo">Forge Events</a>
+      <p class="role-label">Signed in as Admin</p>
+
+      <nav>
+        <ul>
+          <li><a href="admin-dashboard.html">Dashboard</a></li>
+          <li><a href="add-event.html">Add new event</a></li>
+          <li><a href="manage-events.html">Manage events</a></li>
+          <li><a href="registrations.html">Registrations</a></li>
+          <li><a href="checkin.html" class="active">Check-in</a></li>
+          <li><a href="reports.html">Attendance reports</a></li>
+          <li><a href="certificates.html">Certificates and surveys</a></li>
+          <li><a href="users.html">Manage users</a></li>
+        </ul>
+      </nav>
+
+      <div class="logout">
+        <a href="index.html">Log out</a>
+      </div>
+    </aside>
+
+
+    <!-- ============================================================
+         2. MAIN CONTENT
+         ============================================================ -->
+    <main class="main">
+
+      <!-- Title, and a dropdown to choose which event you are checking in for -->
+      <div class="page-top">
+        <div>
+          <h1>Check-in</h1>
+          <p>Scan a ticket or type its ID to check an attendee in.</p>
+        </div>
+
+        <div class="field">
+          <label for="event-select">Event</label>
+          <select id="event-select">
+            <option>Career Fair 2026</option>
+            <option>Alumni Networking Night</option>
+            <option>Tech Talk: AI in Industry</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- The numbers -->
+      <section class="stats">
+        <div class="stat-box">
+          <div class="stat-number">84</div>
+          <div class="stat-label">Checked in</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">200</div>
+          <div class="stat-label">Registered</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">116</div>
+          <div class="stat-label">Not yet arrived</div>
+        </div>
+      </section>
+
+      <!-- Progress bar. The width in style="" is the percentage checked in. -->
+      <section class="panel">
+        <p class="progress-text">42% of registered attendees have arrived</p>
+        <div class="progress">
+          <div class="progress-fill" style="width: 42%;"></div>
+        </div>
+      </section>
+
+
+      <!-- Two columns: scanner on the left, recent check-ins on the right -->
+      <div class="checkin-layout">
+
+        <!-- LEFT: scanner -->
+        <section class="panel">
+          <h2>Scan ticket</h2>
+
+          <!-- Camera placeholder. Later, JavaScript will show the camera here. -->
+          <div class="viewfinder">
+            Camera will appear here<br>
+            Point it at the QR code on the ticket
+          </div>
+
+          <!-- RESULT MESSAGE
+               Only ONE of these shows at a time (decided by code later).
+               For now both are here so you can see how they look. -->
+          <div class="result result-success">
+            <strong>Checked in: Karabo N.</strong><br>
+            Ticket EVT-0231-8842 at 09:14
+          </div>
+
+          <div class="result result-error">
+            <strong>Already checked in</strong><br>
+            Ticket EVT-0231-8842 was used at 09:14. Do not let them in again.
+          </div>
+
+          <!-- Backup: type the ticket ID if the camera or QR code fails -->
+          <h2 class="small-heading">Camera not working?</h2>
+          <form class="manual-form" action="#" method="post">
+            <input type="text" name="ticket-id" placeholder="Type ticket ID, e.g. EVT-0231-8842">
+            <button type="submit" class="btn btn-primary">Check in</button>
+          </form>
+        </section>
+
+        <!-- RIGHT: recent check-ins -->
+        <section class="panel">
+          <h2>Recent check-ins</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Scanned by</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Karabo N.</td>
+                <td>09:14</td>
+                <td>Sipho</td>
+              </tr>
+              <tr>
+                <td>Thabo M.</td>
+                <td>09:12</td>
+                <td>Sipho</td>
+              </tr>
+              <tr>
+                <td>Naledi K.</td>
+                <td>09:10</td>
+                <td>Ayanda</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="panel-link"><a href="reports.html">See who has not arrived yet</a></p>
+        </section>
+
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>
