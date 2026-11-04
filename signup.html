@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forge 0]'. Login</title>
+
+<style>
+:root {
+    --navy: #070d24;
+    --panel: #111a35;
+    --mint: #78ead2;
+    --purple: #7169d5;
+    --white: #f5f7ff;
+    --muted: #aab5d2;
+    --line: #2b385d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: var(--white);
+    background: radial-gradient(circle at top left,#18264c,transparent 40%),var(--navy);
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 610px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--panel);
+    border: 1px solid #26345b;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px #0008;
+}
+
+.left {
+    padding: 50px 40px;
+    background: linear-gradient(145deg,#101b40,#080e25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--mint);
+}
+
+.left h1 {
+    font-size: 40px;
+    line-height: 1.15;
+    margin-top: 65px;
+}
+
+.left p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.right {
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    width: 100%;
+    max-width: 390px;
+}
+
+h2 {
+    font-size: 29px;
+    margin: 0 0 10px;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 24px;
+}
+
+.tabs {
+    display: flex;
+    gap: 6px;
+    background: #080f27;
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+
+.tabs button {
+    flex: 1;
+    padding: 12px 6px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.tabs button.active {
+    background: var(--mint);
+    color: #071326;
+}
+
+.field {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    background: #080f27;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    color: white;
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--mint);
+}
+
+.password {
+    position: relative;
+}
+
+.password input {
+    padding-right: 65px;
+}
+
+.show {
+    position: absolute;
+    right: 12px;
+    top: 13px;
+    color: var(--mint);
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0 22px;
+    font-size: 12px;
+}
+
+.options a,
+.back-link {
+    color: var(--mint);
+    text-decoration: none;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.remember input {
+    width: auto;
+    margin: 0;
+}
+
+.primary {
+    width: 100%;
+    padding: 15px;
+    border: 0;
+    border-radius: 9px;
+    background: var(--mint);
+    color: #071326;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.primary:hover {
+    background: #9af5e2;
+}
+
+.message {
+    font-size: 13px;
+    margin-top: 14px;
+    color: #ff8c96;
+    line-height: 1.5;
+    min-height: 18px;
+}
+
+.message.success {
+    color: var(--mint);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.dashboard {
+    text-align: center;
+}
+
+.avatar {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 16px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #d9e9ed;
+    border: 5px solid var(--purple);
+    color: #17334b;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.role-label {
+    display: inline-block;
+    margin: 5px 0 12px;
+    padding: 7px 13px;
+    border-radius: 20px;
+    background: #25365f;
+    color: var(--mint);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.logout {
+    margin-top: 16px;
+    padding: 12px 25px;
+    border: 1px solid var(--mint);
+    border-radius: 9px;
+    color: var(--mint);
+    background: transparent;
+    cursor: pointer;
+}
+
+.small-note {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-top: 18px;
+}
+
+@media(max-width:700px) {
+    .container {
+        grid-template-columns: 1fr;
+        max-width: 460px;
+    }
+
+    .left {
+        padding: 25px;
+    }
+
+    .left h1 {
+        font-size: 29px;
+        margin-top: 25px;
+    }
+
+    .right {
+        padding: 30px 24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<section class="left">
+    <div class="logo"><span>▶</span> FORGE</div>
+
+    <h1>Your events.<br>One simple place.</h1>
+
+    <p>
+        Register, discover events,manage your tickets and<br/>
+		enjoy a seamless event experience with forge
+    </p>
+</section>
+
+<section class="right">
+
+<!-- LOGIN AND SIGNUP -->
+
+<div class="form" id="authPanel">
+
+    <h2 id="heading">Create Account</h2>
+
+    <p class="subtitle" id="subtitle">
+        Join forge Events today.
+    </p>
+
+    <div class="tabs">
+        <button type="button" class="active" data-role="volunteer">
+            Volunteer
+        </button>
+
+        <button type="button" data-role="admin">
+            Admin
+        </button>
+    </div>
+
+    <div class="tabs">
+        <button type="button" class="active" data-mode="login">
+            Login
+        </button>
+
+        <button type="button" data-mode="signup">
+            Sign Up
+        </button>
+    </div>
+
+    <form id="authForm">
+
+        <div class="field hidden" id="nameField">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" type="text"
+            placeholder="Enter your full name" autocomplete="name">
+        </div>
+
+        <div class="field">
+            <label for="email">Email Address</label>
+            <input id="email" type="email"
+            placeholder="Enter your email address"
+            required autocomplete="username">
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+
+            <div class="password">
+                <input id="password" type="password"
+                placeholder="Enter your password"
+                required autocomplete="current-password">
+
+                <button class="show" type="button"
+                data-target="password">Show</button>
+            </div>
+        </div>
+
+        <div class="field hidden" id="confirmField">
+            <label for="confirmPassword">Confirm Password</label>
+
+            <div class="password">
+                <input id="confirmPassword" type="password"
+                placeholder="Confirm your password"
+                autocomplete="new-password">
+
+                <button class="show" type="button"
+                data-target="confirmPassword">Show</button>
+            </div>
+        </div>
+
+        <div class="options" id="loginOptions">
+
+            <label class="remember">
+                <input type="checkbox" id="remember">
+                Remember me
+            </label>
+
+            <a href="#" id="forgot">Forgot password?</a>
+        </div>
+
+        <button class="primary" id="submitButton" type="submit">
+            Login as Volunteer
+        </button>
+
+        <div class="message" id="message"
+        role="status" aria-live="polite"></div>
+
+    </form>
+
+    
+
+</div>
+
+
+<!-- FORGOT PASSWORD -->
+
+<div class="form hidden" id="resetPanel">
+
+    <h2>Reset Password</h2>
+
+    <p class="subtitle">
+        Enter your registered email and choose a new password.
+    </p>
+
+    <form id="resetForm">
+
+        <div class="field">
+            <label for="resetEmail">Email Address</label>
+            <input id="resetEmail" type="email"
+            required placeholder="Your registered email">
+        </div>
+
+        <div class="field">
+            <label for="resetRole">Account Type</label>
+
+            <select id="resetRole" required
+            style="width:100%;padding:14px;background:#080f27;color:white;border:1px solid #2b385d;border-radius:9px">
+
+                <option value="volunteer">Volunteer</option>
+                <option value="admin">Admin</option>
+
+            </select>
+        </div>
+
+        <div class="field">
+            <label for="newPassword">New Password</label>
+            <input id="newPassword" type="password"
+            minlength="6" required
+            placeholder="At least 6 characters">
+        </div>
+
+        <button class="primary" type="submit">
+            Update Password
+        </button>
+
+        <div class="message" id="resetMessage"
+        role="status" aria-live="polite"></div>
+
+    </form>
+
+    <a href="#" class="back-link" id="backToLogin">
+        ← Back to Login
+    </a>
+
+</div>
+
+
+<!-- DASHBOARD AFTER LOGIN -->
+
+<div class="form dashboard hidden" id="dashboard">
+
+    <div class="avatar" id="avatar">F</div>
+
+    <h2 id="welcome">Welcome!</h2>
+
+    <div class="role-label" id="roleLabel">
+        VOLUNTEER
+    </div>
+
+    <p class="subtitle" id="dashboardText">
+        You are signed in to Forge.
+    </p>
+
+    <button class="primary" id="continueButton" type="button">
+        Continue
+    </button>
+
+    <br>
+
+    <button class="logout" id="logout" type="button">
+        Logout
+    </button>
+
+    <p class="small-note">
+        Real admin permissions and protected dashboards
+        require server-side authentication.
+    </p>
+
+</div>
+
+</section>
+</div>
+
+
+<script>
+"use strict";
+
+const $ = id => document.getElementById(id);
+
+let mode = "login";
+let selectedRole = "volunteer";
+
+
+function getUsers() {
+    try {
+        return JSON.parse(localStorage.getItem("forgeUsers") || "[]");
+    } catch (error) {
+        return [];
+    }
+}
+
+
+function saveUsers(users) {
+    localStorage.setItem("forgeUsers", JSON.stringify(users));
+}
+
+
+function showMessage(text, success = false) {
+    $("message").textContent = text;
+
+    $("message").className =
+        success ? "message success" : "message";
+}
+
+
+function updateButton() {
+    $("submitButton").textContent =
+        mode === "signup"
+        ? "Create Account"
+        : "Login as " +
+        selectedRole.charAt(0).toUpperCase() +
+        selectedRole.slice(1);
+}
+
+
+function setRole(role) {
+    selectedRole = role;
+
+    document.querySelectorAll("[data-role]").forEach(button => {
+        button.classList.toggle(
+            "active",
+            button.dataset.role === role
+        );
+    });
+
+    updateButton();
+    showMessage("");
+}
+
+
+function setMode(newMode) {
+    mode = newMode;
+
+    document.querySelectorAll("[data-mode]").forEach(button => {
+        button.classList.toggle(
+            "active",
+            button.dataset.mode === mode
+        );
+    });
+
+    const signup = mode === "signup";
+
+    $("nameField").classList.toggle("hidden", !signup);
+    $("confirmField").classList.toggle("hidden", !signup);
+    $("loginOptions").classList.toggle("hidden", signup);
+
+    $("heading").textContent =
+        signup ? "Create Account" : "Welcome back";
+
+    $("subtitle").textContent = signup
+        ? "Register for the Forge Reporting System."
+        : "Choose your account type and enter your login details.";
+
+    $("password").autocomplete =
+        signup ? "new-password" : "current-password";
+
+    updateButton();
+    showMessage("");
+}
+
+
+// ACCOUNT TYPE BUTTONS
+
+document.querySelectorAll("[data-role]").forEach(button => {
+    button.addEventListener("click", () => {
+        setRole(button.dataset.role);
+    });
+});
+
+
+// LOGIN AND SIGNUP BUTTONS
+
+document.querySelectorAll("[data-mode]").forEach(button => {
+    button.addEventListener("click", () => {
+        setMode(button.dataset.mode);
+    });
+});
+
+
+// SHOW AND HIDE PASSWORD
+
+document.querySelectorAll(".show").forEach(button => {
+    button.addEventListener("click", () => {
+        const field = $(button.dataset.target);
+
+        field.type =
+            field.type === "password" ? "text" : "password";
+
+        button.textContent =
+            field.type === "password" ? "Show" : "Hide";
+    });
+});
+
+
+// SHOW DASHBOARD
+
+function showDashboard(user) {
+
+    $("authPanel").classList.add("hidden");
+    $("resetPanel").classList.add("hidden");
+    $("dashboard").classList.remove("hidden");
+
+    $("welcome").textContent =
+        "Welcome, " + user.name + "!";
+
+    $("avatar").textContent =
+        (user.name || user.email).charAt(0).toUpperCase();
+
+    $("roleLabel").textContent =
+        user.role.toUpperCase();
+
+    $("dashboardText").textContent =
+        "You are signed in as a " + user.role + "  account.";
+}
+
+
+// LOGIN AND CREATE ACCOUNT
+
+$("authForm").addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const name = $("fullName").value.trim();
+    const email = $("email").value.trim().toLowerCase();
+    const password = $("password").value;
+
+    const users = getUsers();
+
+    if (password.length < 6) {
+        showMessage("Password must contain at least 6 characters.");
+        return;
+    }
+
+
+    // CREATE ACCOUNT
+
+    if (mode === "signup") {
+
+        if (!name) {
+            showMessage("Please enter your full name.");
+            return;
+        }
+
+        if (password !== $("confirmPassword").value) {
+            showMessage("Passwords do not match.");
+            return;
+        }
+
+        if (users.some(user =>
+            user.email === email && user.role === selectedRole
+        )) {
+            showMessage("An account with this email and account type already exists.");
+            return;
+        }
+
+        users.push({
+            name: name,
+            email: email,
+            password: password,
+            role: selectedRole
+        });
+
+        saveUsers(users);
+
+        $("authForm").reset();
+
+        setMode("login");
+
+        $("email").value = email;
+
+        showMessage(
+            "Account created successfully. Please log in.",
+            true
+        );
+
+        return;
+    }
+
+
+    // LOGIN
+
+    const user = users.find(item =>
+        item.email === email &&
+        item.password === password &&
+        item.role === selectedRole
+    );
+
+    if (!user) {
+        showMessage(
+            "Account not found or login details are incorrect. Check the account type or sign up first."
+        );
+        return;
+    }
+
+    if ($("remember").checked) {
+
+        localStorage.setItem(
+            "forgeSession",
+            JSON.stringify({
+                email: user.email,
+                role: user.role
+            })
+        );
+
+    } else {
+
+        localStorage.removeItem("forgeSession");
+
+    }
+
+    showDashboard(user);
+
+});
+
+
+// FORGOT PASSWORD
+
+$("forgot").addEventListener("click", event => {
+
+    event.preventDefault();
+
+    $("authPanel").classList.add("hidden");
+    $("resetPanel").classList.remove("hidden");
+
+    $("resetEmail").value =
+        $("email").value.trim();
+
+    $("resetRole").value = selectedRole;
+
+    $("resetMessage").textContent = "";
+
+});
+
+
+// BACK TO LOGIN
+
+$("backToLogin").addEventListener("click", event => {
+
+    event.preventDefault();
+
+    $("resetPanel").classList.add("hidden");
+    $("authPanel").classList.remove("hidden");
+
+});
+
+
+// UPDATE PASSWORD
+
+$("resetForm").addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const email =
+        $("resetEmail").value.trim().toLowerCase();
+
+    const role = $("resetRole").value;
+
+    const password = $("newPassword").value;
+
+    const users = getUsers();
+
+    const user = users.find(item =>
+        item.email === email && item.role === role
+    );
+
+    if (password.length < 6) {
+
+        $("resetMessage").textContent =
+            "Password must contain at least 6 characters.";
+
+        return;
+    }
+
+    if (!user) {
+
+        $("resetMessage").textContent =
+            "No matching demo account was found.";
+
+        return;
+    }
+
+    user.password = password;
+
+    saveUsers(users);
+
+    $("resetMessage").textContent =
+        "Demo password updated. You can now log in.";
+
+    $("resetMessage").className =
+        "message success";
+
+});
+
+
+// LOGOUT
+
+$("logout").addEventListener("click", () => {
+
+    localStorage.removeItem("forgeSession");
+
+    $("dashboard").classList.add("hidden");
+    $("authPanel").classList.remove("hidden");
+
+    $("authForm").reset();
+
+    setRole("volunteer");
+    setMode("login");
+
+});
+
+
+// CONTINUE BUTTON
+
+$("continueButton").addEventListener("click", () => {
+
+    alert(
+        "The Admin and Volunteer dashboards will be connected in the next development stage."
+    );
+
+});
+
+
+// RESTORE REMEMBERED LOGIN
+
+try {
+
+    const session = JSON.parse(
+        localStorage.getItem("forgeSession") || "null"
+    );
+
+    if (session) {
+
+        const user = getUsers().find(item =>
+            item.email === session.email &&
+            item.role === session.role
+        );
+
+        if (user) {
+            showDashboard(user);
+        }
+
+    }
+
+} catch (error) {
+
+    localStorage.removeItem("forgeSession");
+
+}
+
+</script>
+
+</body>
+</html>
